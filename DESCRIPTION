@@ -1,0 +1,12 @@
+Package: TFBS.QSAM
+Type: Package
+Title: The analysis of TFBS by QSAM 
+Version: 1.0.1
+Date: 2013-12-04
+Author: Evgenia Temlyakova
+Maintainer: Evgenia Temlyakova <evgenia.teml@gmail.com>
+Description: The package provides various techniques to analyse physical and chemical properties of DNA sequencies. The most attention is given to transription factor binding sites. 
+License: GPL (>= 2)
+Copyright: Evgenia Temlyakova 2013
+Depends: R (>= 2.14), seqinr
+Suggests: testthat
