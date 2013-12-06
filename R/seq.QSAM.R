@@ -5,7 +5,24 @@ structure(function # QSAM-transformation of DNA sequences
 (s, ##<< DNA-sequence
 QSAM='QSAM1' ##<< QSAM matrix 4*n, where n is a number of properties; possible values are 'QSAM1' and 'QSAM2'
 ){
-  require(seqinr)
+  
+  if(!require(seqinr)){
+      stop("Method requires library 'seqinr'. Please install and relaunch.\n")
+  }
+  
+  if(!class(QSAM)%in%c('character', 'data.frame', 'matrix')){
+      stop("Wrong argument: correct the argument QSAM! Choose one of predefined matrices ('QSAM1', 'QSSAM2') or set it as a data.frame or a matrix.\n")
+  }
+  if(class(QSAM)%in%c('data.frame', 'matrix')){
+    if(dim(QSAM)[1]!=4){ 
+      stop("Wrong argument: the number of rows in the QSAM matrix should be equal to 4 (as a number of canonical nucleotides).\n") 
+    }
+    classinfo<-unique(apply(QSAM, 1, class))
+    if(length(classinfo)>1 | classinfo!='numeric'){
+      stop("Wrong argument: tha QSAM matrix should contain only numeric values!\n")
+    }
+  }
+  
   s<-s2n(s2c(s))+1
   
   if (is(QSAM)[1]=='character'){
