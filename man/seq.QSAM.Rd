@@ -1,7 +1,7 @@
 \name{seq.QSAM}
 \alias{seq.QSAM}
 \title{QSAM-transformation of DNA sequences}
-\description{The function converts DNA sequence into QSAM-vector. There are 2 predefined types of QSAM
+\description{The function converts a DNA sequence into QSAM-vector. There are 2 predefined types of QSAM
 values nuclotides, but it is also possible to set another one for calculations.}
 \usage{\method{seq}{QSAM}(s, QSAM = "QSAM1")}
 \arguments{
@@ -13,10 +13,6 @@ values nuclotides, but it is also possible to set another one for calculations.}
 
 \author{Evgenia Temlyakova}
 
-\references{
-Liang, G., & Li, Z. (2007). Scores of generalized base properties for quantitative sequence-activity modelings for< i> E. coli</i> promoters based on support vector machine. Journal of Molecular Graphics and Modelling, 26(1), 269-281.
-Sandberg, Maria, Michael Sjöström, and Jörgen Jonsson. "A multivariate characterization of tRNA nucleosides." Journal of Chemometrics 10.5‐6 (1996): 493-508.
-}
 
 
 \seealso{\code{\link{QSAM.seq}}}
@@ -24,5 +20,6 @@ Sandberg, Maria, Michael Sjöström, and Jörgen Jonsson. "A multivariate charac
 seq.QSAM('AAATTGCGC')
 
 myQSAM<-as.data.frame(matrix(c(-2.23, 0.79, 2.37, 0.72,  0.32, -3.76, 1.92, 2.52), nrow=4, byrow=TRUE))
+rownames(myQSAM)<-c('A', 'C', 'G', 'T')
 seq.QSAM('AAATTGCGC', QSAM=myQSAM)
 }

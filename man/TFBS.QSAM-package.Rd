@@ -8,7 +8,7 @@
 \tabular{ll}{Package: \tab TFBS.QSAM\cr
 Type: \tab Package\cr
 Title: \tab The analysis of TFBS by QSAM\cr
-Version: \tab 1.0.1\cr
+Version: \tab 1.0.2\cr
 Date: \tab 2013-12-04\cr
 Author: \tab Evgenia Temlyakova\cr
 Maintainer: \tab Evgenia Temlyakova <evgenia.teml@gmail.com>\cr
