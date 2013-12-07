@@ -32,7 +32,7 @@ QSAM='QSAM1' ##<< QSAM matrix 4*n, where n is a number of properties; possible v
     num<-c()
     if (QSAM=='QSAM1'){ q<-QSAM1 }
     if (QSAM=='QSAM2'){ q<-QSAM2 }
-    num<-array(NA, length(s)*4)
+    num<-array(NA, length(s)*dim(q)[2])
     j<-1
     for (i in s){
       num[j:(j+3)]<-q[i,]
@@ -41,11 +41,12 @@ QSAM='QSAM1' ##<< QSAM matrix 4*n, where n is a number of properties; possible v
   }
   if (is(QSAM)[1]=='data.frame' || is(QSAM)[1]=='matrix'){
     q<-QSAM
-    num<-array(NA, length(s)*4)
+    d<-dim(q)[2]
+    num<-array(NA, length(s)*d)
     j<-1
     for (i in s){
-      num[j:(j+3)]<-q[i,]
-      j<-j+4
+      num[j:(j+d-1)]<-q[i,]
+      j<-j+d
     }
     num<-unlist(num)
   }
