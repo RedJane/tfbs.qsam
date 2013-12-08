@@ -30,7 +30,7 @@ List of 8
 %%  ~~ If necessary, more details than the __description__ above ~~
 }
 \source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
+http://regulondb.ccg.unam.mx/menu/download/datasets/files/BindingSiteSet.txt
 }
 \references{
 %%  ~~ possibly secondary sources and usages ~~
