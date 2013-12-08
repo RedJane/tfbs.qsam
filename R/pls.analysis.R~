@@ -10,7 +10,6 @@ test=NULL, ##<< a data.frame with two subobjects of class AsIs - descriptors and
 shuffle=TRUE, ##<< logical: do you want to shuffle objects order in each set?
 train.part=50 ##<< a proportion of objects to be put in the training process; only if you specify set1 and set2
 ){
-
   if(length(train)+length(test)+length(set1)+length(set2)==0){
       stop('Wrong argument: no data specified.\n')
   }
@@ -24,7 +23,7 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
       stop('Wrong argument: the value train.part should be from 0 to 100%.\n')
   }
 
-  result<-NA 
+  
   if (length(train)+length(test)>0 & length(set1)+length(set2)==0){
     if(dim(train)[2]!=2 | dim(test)[2]!=2){
 	stop('Wrong argument: train and test sets do not contain two subobjects - descriptors and classes.\n')
@@ -135,6 +134,7 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
     ##<<source pls package: http://cran.r-project.org/web/packages/pls/index.html
     result<-list(pls=tf.pls, train=tf.train, test=tf.test, predict=tf.predict, perform=res, bc=bc)
   }
+  result<-NA
   ##<<value list with results from PLS-DA analysis
   return(result)
 }, ex = function(){
