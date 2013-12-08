@@ -32,6 +32,7 @@ List of 160
 \references{
 %%  ~~ possibly secondary sources and usages ~~
 }
+\seealso{\code{\link{data(tf_equallength)}}}
 \examples{
 data(tf_dataset)
 ## maybe str(tf_dataset) ; plot(tf_dataset) ...
