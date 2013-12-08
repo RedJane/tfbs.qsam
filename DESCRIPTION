@@ -1,7 +1,7 @@
 Package: TFBS.QSAM
 Type: Package
 Title: The analysis of TFBS by QSAM 
-Version: 1.0.2
+Version: 1.0.3
 Date: 2013-12-04
 Author: Evgenia Temlyakova
 Maintainer: Evgenia Temlyakova <evgenia.teml@gmail.com>
