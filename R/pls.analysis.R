@@ -51,12 +51,15 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
     tf.pls <-plsr(TY ~ CH, ncomp=10, data=tf.train, scale=TRUE, centered=TRUE, validation='CV')
     tf.predict<-predict(tf.pls, tf.test, ncomp=1:10, type='response')
     
+    r2<-100*drop(R2(tf.pls, estimate='all', intercept=FALSE)$val)
+    bc<-which.max(r2[2,])
+    
     res<-c()
     for (threshold in seq(0, 1, 0.05)){
-	tp<-length(which(tf.predict[tp.i]>=threshold))
-	fn<-length(which(tf.predict[tp.i]<threshold))
-	tn<-length(which(tf.predict[-tp.i]<threshold))
-	fp<-length(which(tf.predict[-tp.i]>threshold))
+	tp<-length(which(tf.predict[tp.i, , bc]>=threshold))
+	fn<-length(which(tf.predict[tp.i, , bc]<threshold))
+	tn<-length(which(tf.predict[-tp.i, , bc]<threshold))
+	fp<-length(which(tf.predict[-tp.i, , bc]>threshold))
 	r<-tp/(tp+fn) 
 	p<-tp/(tp+fp)
 	a<-(tp+tn)/(tp+tn+fp+fn)
@@ -66,8 +69,7 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
     colnames(res)<-c('tp', 'fn', 'tn', 'fp', 'r', 's', 'p', 'a')
     rownames(res)<-seq(0, 1, 0.05)
 
-    r2<-100*drop(R2(tf.pls, estimate='all', intercept=FALSE)$val)
-    bc<-which.max(r2[2,])
+
   
     ##<<source pls package: http://cran.r-project.org/web/packages/pls/index.html
     result<-list(pls=tf.pls, train=tf.train, test=tf.test, predict=tf.predict, perform=res, bc=bc)
@@ -114,12 +116,15 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
     tf.predict<-predict(tf.pls, tf.test, ncomp=1:10, type='response')
     ll<-dim(tf.predict)[1]
     
+    r2<-100*drop(R2(tf.pls, estimate='all', intercept=FALSE)$val)
+    bc<-which.max(r2[2,])
+    
     res<-c()
     for (threshold in seq(0, 1, 0.05)){
-	tp<-length(which(tf.predict[1:l]>=threshold))
-	fn<-length(which(tf.predict[1:l]<threshold))
-	tn<-length(which(tf.predict[(l+1):ll]<threshold))
-	fp<-length(which(tf.predict[(l+1):ll]>threshold))
+	tp<-length(which(tf.predict[1:l, , bc]>=threshold))
+	fn<-length(which(tf.predict[1:l, , bc]<threshold))
+	tn<-length(which(tf.predict[(l+1):ll, , bc]<threshold))
+	fp<-length(which(tf.predict[(l+1):ll, , bc]>threshold))
 	r<-tp/(tp+fn) 
 	p<-tp/(tp+fp)
 	a<-(tp+tn)/(tp+tn+fp+fn)
@@ -129,8 +134,7 @@ train.part=50 ##<< a proportion of objects to be put in the training process; on
     colnames(res)<-c('tp', 'fn', 'tn', 'fp', 'r', 's', 'p', 'a')
     rownames(res)<-seq(0, 1, 0.05)
 
-    r2<-100*drop(R2(tf.pls, estimate='all', intercept=FALSE)$val)
-    bc<-which.max(r2[2,])
+
     
     ##<<source pls package: http://cran.r-project.org/web/packages/pls/index.html
     result<-list(pls=tf.pls, train=tf.train, test=tf.test, predict=tf.predict, perform=res, bc=bc)
